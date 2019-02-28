@@ -65,19 +65,31 @@ public class Server {
 				HPictures.addAll(VPictures);
 			}
 			
+//			Collections.sort(HPictures, Picture.tagComparator);
+			
+/*			int last = HPictures.size()%2==0?HPictures.size()/2:(HPictures.size()-1)/2;
+			for (int j = 0; j<last; j++) {
+					Pair p = new Pair(HPictures.get(j),HPictures.get(HPictures.size()-1-j) );
+					pairList.add(p);
+				}		*/		
+			
+
 			PrintWriter writer = new PrintWriter("c_memorable_moments_out.txt","UTF-8");
 			writer.println(HPictures.size());
 			
+			int size = HPictures.size();
 			while(!HPictures.isEmpty() && HPictures.size() > 1) {
 				Pair p = new Pair(HPictures.get(0));
 				for (int i = 1; i<HPictures.size(); i++) {
 					p.compair(HPictures.get(i), i);
 				}
-				HPictures.remove(0);
-				HPictures.remove(p.getSelectedTag());
+				HPictures.remove(p.getHelp());
+				HPictures.remove(p.getP1());
 				pairList.add(p);
-			}
+				System.out.println(HPictures.size());
+			}  
 			
+//			Collections.shuffle(pairList);
 			for (int i=0; i<pairList.size(); i++) writer.print(pairList.get(i).write());
 			if (HPictures.size() == 1) writer.print(HPictures.get(0).finalOutput());
 			writer.close();		

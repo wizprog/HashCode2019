@@ -16,7 +16,7 @@ public class Picture {
 		this.position = position;
 		this.tags = tags;
 		this.ID1 = ID1;
-		this.ID2 = ID2;
+		this.ID2= ID2;
 	}
 	
 	public Picture() {
@@ -106,7 +106,7 @@ public class Picture {
 		 ArrayList<Picture> newList = new ArrayList<>();
 		
 		 
-		 for(int i = 0;i<=last;i++) {
+		 for(int i = 0;i<last;i++) {
 			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-i-1));
 			 newList.add(newPic);
 		 }

@@ -1,5 +1,7 @@
-4
+6
 H 3 cat beach sun
 V 2 selfie smile
 V 2 garden selfie
 H 2 garden cat
+V 1 xxx
+V 1 yyy

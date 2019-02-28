@@ -20,7 +20,7 @@ public class Pair {
 		super();
 		this.p1 = p1;
 		selectedTag = 1;
-		globalScore = 0;
+		globalScore = -1;
 		this.help = null;
 	}
 	
@@ -51,7 +51,7 @@ public class Pair {
 			this.help = p;
 			globalScore = sc;
 			selectedTag = x;
-		}	
+		}
 	}
 	
 	void intersection() {
@@ -136,7 +136,14 @@ public class Pair {
 	}
 
 	public String write() {
-		 return p1.finalOutput() + help.finalOutput();
+		 StringBuilder s = new StringBuilder();
+//		 if (p1 != null) s.append(p1.finalOutput());
+//		 if (help != null) s.append(help.finalOutput());
+		 return p1.finalOutput() + help.finalOutput(); //s.toString();
+	}
+	
+	public String writeNew() {
+		return p1.finalOutput() + p2.finalOutput();
 	}
 	
 	
