@@ -103,6 +103,7 @@ public class Picture {
 			 newList.add(newPic);
 		 }
 		 
+		 
 		 return newList;
 	 }
 	
