@@ -1,10 +1,10 @@
 package main;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.Scanner;
-
+import java.util.*;
 public class Server {
+	
+	private static int lastID = 0;
 	
 	public static void main(String[] args) {
 		
@@ -41,18 +41,24 @@ public class Server {
 				}
 				
 				if(tempPosition=='H') {
-					HPictures.add(new Picture(1,tempTags));
+					HPictures.add(new Picture(1,tempTags,lastID++));
 				}
 				else {
-					VPictures.add(new Picture(0,tempTags));
+					VPictures.add(new Picture(0,tempTags,lastID++));
 				}
 				
 			}
-
-			
 			
 			for (int i=0; i<HPictures.size(); i++) System.out.println(HPictures.get(i).toString());
 			for (int i=0; i<VPictures.size(); i++) System.out.println(VPictures.get(i).toString());
+			
+			System.out.println("///////////////////////////////////////////////////////");
+
+			Collections.sort(VPictures,Picture.tagComparator);
+			
+			
+			
+			
 		
 		} catch (Exception e) {
 			e.printStackTrace();

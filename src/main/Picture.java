@@ -1,20 +1,19 @@
 package main;
 
-import java.awt.List;
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Picture {
 	
 	private int  position;
-	
+	private long ID;
+
 	private ArrayList<String> tags = new ArrayList<>();
 
-	public Picture(int position, ArrayList<String> tags) {
+	public Picture(int position, ArrayList<String> tags,int ID) {
 		super();
 		this.position = position;
 		this.tags = tags;
+		this.ID = ID;
 	}
 	
 	public Picture() {
@@ -48,6 +47,14 @@ public class Picture {
 		this.tags = tags;
 	}
 	
+	public long getID() {
+		return ID;
+	}
+
+	public void setID(long iD) {
+		ID = iD;
+	}
+	
 	public static Picture merge(Picture p1 , Picture p2) {
 		Picture p = new Picture();
 		
@@ -59,5 +66,32 @@ public class Picture {
 		p.setTags(combinedList);
 		return p;
 	}
+	
+	
+	 public static Comparator<Picture> tagComparator = new Comparator<Picture>() {
+
+			public int compare(Picture p1, Picture p2) {
+			  return p1.getTags().size()>p2.getTags().size()?1:0;
+		    }
+	 };
+	 
+	 
+	 public static ArrayList<Picture> mergePictures(ArrayList<Picture> list){
+		 if(list.isEmpty()) {
+			 return null;
+		 }
+		 
+		 long first = 0;
+		 long last = list.size()%2==0?list.size()/2:(list.size()-1)/2;
+		 ArrayList<Picture> newList = new ArrayList<>();
+		
+		 
+		 for(long i = first;i<last;i++) {
+			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-i));
+		 }
+		 
+		 
+		 return null;
+	 }
 	
 }
