@@ -1,11 +1,13 @@
 package main;
 
+import java.awt.List;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Picture {
 	
 	private int  position;
-	private int tagSize;
 	
 	private ArrayList<String> tags = new ArrayList<>();
 
@@ -13,7 +15,12 @@ public class Picture {
 		super();
 		this.position = position;
 		this.tags = tags;
-		tagSize = tags.size();
+	}
+	
+	public Picture() {
+		super();
+		this.position = 0;
+		this.tags = null;
 	}
 	
 	@Override
@@ -33,14 +40,6 @@ public class Picture {
 		this.position = position;
 	}
 
-	public int getTagSize() {
-		return tagSize;
-	}
-
-	public void setTagSize(int tagSize) {
-		this.tagSize = tagSize;
-	}
-
 	public ArrayList<String> getTags() {
 		return tags;
 	}
@@ -49,6 +48,16 @@ public class Picture {
 		this.tags = tags;
 	}
 	
-	
+	public static Picture merge(Picture p1 , Picture p2) {
+		Picture p = new Picture();
+		
+		 Set<String> set = new LinkedHashSet<>(p1.getTags());
+	        set.addAll(p2.getTags());
+	        ArrayList<String> combinedList = new ArrayList<>(set);
+	        
+		p.setPosition(1);
+		p.setTags(combinedList);
+		return p;
+	}
 	
 }
