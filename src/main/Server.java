@@ -1,55 +1,52 @@
 package main;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Server {
 	
 	public static void main(String[] args) {
 		
+		ArrayList<Picture> pictures = new ArrayList<>();
+		
 		File file = null;
 		Scanner scanner = null;
 		
-		int row;
-		int column;
-		int numOfVeh;
-		int numOfRides;
-		int bonus;
-		int numOfSteps;
+		
+		long N;
+		
+		int tempNum;
+		char tempPosition;
+		ArrayList<String> tempTags;
+	
+		
+		
 		
 		int x, y , x1, y1 , startTime, endTime;
 		
 		try {
-			file = new File("example.in");
+			file = new File("a_example.txt");
 			scanner = new Scanner(file);
 			
-			row = scanner.nextInt();
-			column = scanner.nextInt();
+			N = scanner.nextInt();
 			
-			numOfVeh = scanner.nextInt();
-			numOfRides = scanner.nextInt();
-			bonus = scanner.nextInt();
-			numOfSteps = scanner.nextInt();
-			
-//			Ride[] arrayOfRides = new Ride[numOfRides];
-			
-			
-			for (int i=0; i<numOfRides; i++) {
-				x = scanner.nextInt();
-				y = scanner.nextInt();
-				x1 = scanner.nextInt();
-				y1 = scanner.nextInt();
-				startTime = scanner.nextInt();
-				endTime = scanner.nextInt();
+			for (long i=0; i<N; i++) {
+				tempPosition = scanner.next().charAt(0);	
+				tempNum = scanner.nextInt();
+				tempTags = new ArrayList<>();
 				
-//				arrayOfRides[i] = new Ride(x , y , x1, y1, startTime, endTime);
+				for(int j =0;j<tempNum;j++) {
+					tempTags.add(scanner.next());
+				}
+				
+				pictures.add(new Picture(tempPosition=='H'?1:0,tempTags));
 				
 			}
+
 			
 			
-			
-			
-//			for (int i=0; i<numOfRides; i++) System.out.println( arrayOfRides[i]);
+			for (int i=0; i<N; i++) System.out.println(pictures.get(i).toString());
 		
 		} catch (Exception e) {
 			e.printStackTrace();
