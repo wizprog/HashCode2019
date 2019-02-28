@@ -81,7 +81,6 @@ public class Picture {
 		return p;
 	}
 	
-	
 	 public static Comparator<Picture> tagComparator = new Comparator<Picture>() {
 
 			public int compare(Picture p1, Picture p2) {
