@@ -97,11 +97,16 @@ public class Picture {
 		 ArrayList<Picture> newList = new ArrayList<>();
 		
 		 
-		 for(int i = 0;i<=last;i++) {
-			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-i));
+		 for(int i = 0;i<last;i++) {
+			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-1-i));
 			 newList.add(newPic);
 		 }
 		 
+		 
+		 if(list.size()%2!=0) {
+			 list.get(last).setPosition(1);
+			 newList.add(list.get(last));
+		 }
 		 
 		 return newList;
 	 }

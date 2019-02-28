@@ -56,8 +56,11 @@ public class Server {
 
 			Collections.sort(VPictures,Picture.tagComparator);
 			
+			VPictures = Picture.mergePictures(VPictures);
 			
+			HPictures.addAll(VPictures);
 			
+			for (int i=0; i<HPictures.size(); i++) System.out.println(HPictures.get(i).toString());
 			
 		
 		} catch (Exception e) {
