@@ -51,6 +51,7 @@ public class Server {
 				
 			}
 			
+			
 
 			for (int i=0; i<HPictures.size(); i++) System.out.println(HPictures.get(i).toString());
 			if(!VPictures.isEmpty()) for (int i=0; i<VPictures.size(); i++) System.out.println(VPictures.get(i).toString());
