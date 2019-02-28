@@ -15,7 +15,7 @@ public class Picture {
 		this.position = position;
 		this.tags = tags;
 		this.ID1 = ID1;
-		this.ID1= ID2;
+		this.ID2= ID2;
 	}
 	
 	public Picture() {
@@ -32,6 +32,14 @@ public class Picture {
 		}
 		return sb.toString();
 	}
+	
+	public String finalOutput() {
+		StringBuilder sb = new StringBuilder(String.valueOf(ID1));
+		if(ID2!=-1) sb.append(" "+String.valueOf(ID2));
+		sb.append("\n");
+		return sb.toString();
+	}
+	
 
 	public int getPosition() {
 		return position;
