@@ -8,12 +8,12 @@ public class Server {
 	
 	public static void main(String[] args) {
 		
-		ArrayList<Picture> pictures = new ArrayList<>();
+		ArrayList<Picture> HPictures = new ArrayList<>();
+		ArrayList<Picture> VPictures = new ArrayList<>();
 		
 		File file = null;
 		Scanner scanner = null;
-		
-		
+
 		long N;
 		
 		int tempNum;
@@ -40,13 +40,19 @@ public class Server {
 					tempTags.add(scanner.next());
 				}
 				
-				pictures.add(new Picture(tempPosition=='H'?1:0,tempTags));
+				if(tempPosition=='H') {
+					HPictures.add(new Picture(1,tempTags));
+				}
+				else {
+					VPictures.add(new Picture(0,tempTags));
+				}
 				
 			}
 
 			
 			
-			for (int i=0; i<N; i++) System.out.println(pictures.get(i).toString());
+			for (int i=0; i<HPictures.size(); i++) System.out.println(HPictures.get(i).toString());
+			for (int i=0; i<VPictures.size(); i++) System.out.println(VPictures.get(i).toString());
 		
 		} catch (Exception e) {
 			e.printStackTrace();
