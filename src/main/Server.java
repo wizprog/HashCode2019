@@ -41,10 +41,10 @@ public class Server {
 				}
 				
 				if(tempPosition=='H') {
-					HPictures.add(new Picture(1,tempTags,lastID++));
+					HPictures.add(new Picture(1,tempTags,lastID++,0));
 				}
 				else {
-					VPictures.add(new Picture(0,tempTags,lastID++));
+					VPictures.add(new Picture(0,tempTags,lastID++,0));
 				}
 				
 			}

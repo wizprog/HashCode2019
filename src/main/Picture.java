@@ -5,15 +5,17 @@ import java.util.*;
 public class Picture {
 	
 	private int  position;
-	private long ID;
+	private long ID1;
+	private long ID2;
 
 	private ArrayList<String> tags = new ArrayList<>();
 
-	public Picture(int position, ArrayList<String> tags,int ID) {
+	public Picture(int position, ArrayList<String> tags,int ID1,int ID2) {
 		super();
 		this.position = position;
 		this.tags = tags;
-		this.ID = ID;
+		this.ID1 = ID1;
+		this.ID1= ID2;
 	}
 	
 	public Picture() {
@@ -47,14 +49,23 @@ public class Picture {
 		this.tags = tags;
 	}
 	
-	public long getID() {
-		return ID;
+	public long getID1() {
+		return ID1;
 	}
 
-	public void setID(long iD) {
-		ID = iD;
+	public void setID1(long iD1) {
+		ID1 = iD1;
 	}
 	
+	
+	public long getID2() {
+		return ID2;
+	}
+
+	public void setID2(long iD2) {
+		ID2 = iD2;
+	}
+
 	public static Picture merge(Picture p1 , Picture p2) {
 		Picture p = new Picture();
 		
@@ -64,6 +75,9 @@ public class Picture {
 	        
 		p.setPosition(1);
 		p.setTags(combinedList);
+		
+		p.setID1(p1.getID1());
+		p.setID2(p2.getID1());
 		return p;
 	}
 	
@@ -80,18 +94,16 @@ public class Picture {
 		 if(list.isEmpty()) {
 			 return null;
 		 }
-		 
-		 long first = 0;
-		 long last = list.size()%2==0?list.size()/2:(list.size()-1)/2;
+		 int last = list.size()%2==0?list.size()/2:(list.size()-1)/2;
 		 ArrayList<Picture> newList = new ArrayList<>();
 		
 		 
-		 for(long i = first;i<last;i++) {
+		 for(int i = 0;i<=last;i++) {
 			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-i));
+			 newList.add(newPic);
 		 }
 		 
-		 
-		 return null;
+		 return newList;
 	 }
 	
 }
