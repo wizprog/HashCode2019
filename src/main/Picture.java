@@ -1,6 +1,7 @@
 package main;
 
 import java.util.*;
+import main.Pair;
 
 public class Picture {
 	
@@ -15,7 +16,7 @@ public class Picture {
 		this.position = position;
 		this.tags = tags;
 		this.ID1 = ID1;
-		this.ID1= ID2;
+		this.ID2 = ID2;
 	}
 	
 	public Picture() {
@@ -32,6 +33,14 @@ public class Picture {
 		}
 		return sb.toString();
 	}
+	
+	public String finalOutput() {
+		StringBuilder sb = new StringBuilder(String.valueOf(ID1));
+		if(ID2!=-1) sb.append(" "+String.valueOf(ID2));
+		sb.append("\n");
+		return sb.toString();
+	}
+	
 
 	public int getPosition() {
 		return position;
@@ -98,10 +107,15 @@ public class Picture {
 		
 		 
 		 for(int i = 0;i<=last;i++) {
-			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-i));
+			 Picture newPic = Picture.merge(list.get(i), list.get(list.size()-i-1));
 			 newList.add(newPic);
 		 }
 		 
+		 
+		 if(list.size()%2!=0) {
+			 list.get(last).setPosition(1);
+			 newList.add(list.get(last));
+		 }
 		 
 		 return newList;
 	 }
